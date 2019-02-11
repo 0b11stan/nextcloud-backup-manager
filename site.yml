@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles: ssh-server
+
+- hosts: nextcloud
+  roles: backup-target
+
+- hosts: nextbackup
+  roles: backup-host
