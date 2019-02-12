@@ -1,2 +1,15 @@
-# create a lvm volume
-# create a directory /backups
+- name: user nextsavior is present
+  user:
+    name: '{{ backup_user }}'
+    state: present
+    shell: /usr/sbin/nologin
+
+- name: add ssh keys
+  copy:
+    src: '{{ item }}'
+    dest: '/home/{{ backup_user }}/.ssh/{{ item }}'
+    owner: '{{ backup_user }}'
+    group: '{{ backup_user }}'
+  loop:
+    - id_rsa
+    - id_rsa.pub

@@ -1,0 +1,12 @@
+- name: user nextsavior is present
+  user:
+    name: '{{ backup_user }}'
+    state: present
+    shell: /usr/sbin/nologin
+    groups: www-data
+
+- name: set authorized key for the backup user from the backup host
+  authorized_key:
+    user: '{{ backup_user }}'
+    state: present
+    key: '{{ lookup("file", "roles/backup-host/files/id_rsa.pub") }}'

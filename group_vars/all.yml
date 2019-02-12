@@ -1,0 +1,6 @@
+backup_user: nextsavior
+nextcloud_host: nextcloud.lab
+database:
+  name: nextcloud
+  user: oc_admin
+  password: k6wvf+vqhqlwT9zXS9oLXA0X+l9Imm
