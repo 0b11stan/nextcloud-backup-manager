@@ -30,9 +30,9 @@ ssh $user@$backup_host "echo $back_sudo_pass | sudo -S apt-get update" &>/dev/nu
 ssh $user@$backup_host "echo $back_sudo_pass | sudo -S apt-get upgrade -y" &>/dev/null
 
 echo "\n>> install python on $nextcloud_host..."
-ssh $user@$nextcloud_host "echo $next_sudo_pass | sudo -S apt-get install python3" &>/dev/null
+ssh $user@$nextcloud_host "echo $next_sudo_pass | sudo -S apt-get install python" &>/dev/null
 
 echo "\n>> install python on $backup_host..."
-ssh $user@$backup_host "echo $back_sudo_pass | sudo -S apt-get install python3" &>/dev/null
+ssh $user@$backup_host "echo $back_sudo_pass | sudo -S apt-get install python" &>/dev/null
 
 # rm roles/backup-host/files/ssh-key*
