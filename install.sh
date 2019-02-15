@@ -2,7 +2,7 @@
 
 OPTIND=1
 
-usage='usage : ./setup.sh -u <ssh user> -n <nextcloud host> -b <backup host>'
+usage='usage : # ./setup.sh -u <ssh user> -n <nextcloud host> -b <backup host>'
 
 while getopts u:n::b:h opt; do
     case $opt in

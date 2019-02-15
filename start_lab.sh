@@ -1,5 +1,9 @@
 #!/bin/bash
 
+ls /root 2>/dev/null | {
+    echo 'Error : This script require root privilèges.'
+}
+
 virsh net-start preprod1
 virsh start nextcloud
 virsh start backup
