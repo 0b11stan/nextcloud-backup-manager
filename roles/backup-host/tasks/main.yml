@@ -1,15 +1,30 @@
 - name: user nextsavior is present
   user:
-    name: '{{ backup_user }}'
+    name: "{{ backup_user }}"
     state: present
     shell: /usr/sbin/nologin
 
+- name: "ssh directory exist in {{ backup_user }}'s home"
+  file:
+    path: "/home/{{ backup_user }}/.ssh"
+    state: directory
+    mode: 0700
+    owner: "{{ backup_user }}"
+    group: "{{ backup_user }}"
+
 - name: add ssh keys
   copy:
-    src: '{{ item }}'
-    dest: '/home/{{ backup_user }}/.ssh/{{ item }}'
-    owner: '{{ backup_user }}'
-    group: '{{ backup_user }}'
+    src: "{{ item }}"
+    dest: "/home/{{ backup_user }}/.ssh/{{ item }}"
+    owner: "{{ backup_user }}"
+    group: "{{ backup_user }}"
   loop:
     - id_rsa
     - id_rsa.pub
+
+- name: backup script is present
+  template:
+    src: backup.sh
+    dest: "/home/{{ backup_user }}/"
+    owner: "{{ backup_user }}"
+    group: "{{ backup_user }}"

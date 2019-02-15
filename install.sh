@@ -2,7 +2,7 @@
 
 OPTIND=1
 
-usage='usage : # ./setup.sh -u <ssh user> -n <nextcloud host> -b <backup host>'
+usage='usage : ./setup.sh -u <ssh user> -n <nextcloud host> -b <backup host>'
 
 while getopts u:n::b:h opt; do
     case $opt in
@@ -39,10 +39,10 @@ ssh $user@$backup_host "echo $back_sudo_pass | sudo -S apt-get update" &>/dev/nu
 ssh $user@$backup_host "echo $back_sudo_pass | sudo -S apt-get upgrade -y" &>/dev/null
 
 echo ">> install python on $nextcloud_host ..."
-ssh $user@$nextcloud_host "echo $next_sudo_pass | sudo -S apt-get install python" &>/dev/null
+ssh $user@$nextcloud_host "echo $next_sudo_pass | sudo -S apt-get -y install python" &>/dev/null
 
 echo ">> install python on $backup_host ..."
-ssh $user@$backup_host "echo $back_sudo_pass | sudo -S apt-get install python" &>/dev/null
+ssh $user@$backup_host "echo $back_sudo_pass | sudo -S apt-get -y install python" &>/dev/null
 
 echo ">> write config file ..."
 tee group_vars/all.yml >>/dev/null << EOF
@@ -77,7 +77,7 @@ echo ">> generate ssh keys for host and backup connexion"
 ssh-keygen -f roles/backup-host/files/id_rsa -N '' >/dev/null
 
 echo ">> thank you, installation process will continue with ansible..."
-echo && ansible-playbook -kKb -i inventory.ini site.yml
+echo && ansible-playbook -Kb -i inventory.ini site.yml
 
 rm roles/backup-host/files/id_rsa*
 rm inventory.ini
