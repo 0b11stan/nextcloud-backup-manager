@@ -28,3 +28,4 @@
     dest: "/home/{{ backup_user }}/"
     owner: "{{ backup_user }}"
     group: "{{ backup_user }}"
+    mode: 0100
