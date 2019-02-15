@@ -6,5 +6,5 @@ ls /root 2>/dev/null | {
 
 sed -i -r 's/^.*lab//' /etc/hosts
 virsh shutdown nextcloud
-virsh shutdown next_backup
+virsh shutdown backup
 virsh net-destroy preprod1
