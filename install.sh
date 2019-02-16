@@ -73,11 +73,12 @@ $nextcloud_host
 $backup_host
 EOF
 
-echo ">> generate ssh keys for host and backup connexion"
+echo ">> generate ssh keys for host and backup connexion ..."
 ssh-keygen -f roles/backup-host/files/id_rsa -N '' >/dev/null
 
-echo ">> thank you, installation process will continue with ansible..."
+echo ">> thank you, installation process will continue with ansible ..."
 echo && ansible-playbook -Kb -i inventory.ini site.yml
 
 rm roles/backup-host/files/id_rsa*
+rm group_vars/all.yml
 rm inventory.ini
