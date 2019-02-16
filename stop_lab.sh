@@ -1,8 +1,9 @@
 #!/bin/bash
 
-ls /root 2>/dev/null | {
-    echo 'Error : This script require root privilèges.'
-}
+if [ $EUID -ne 0 ]; then
+    echo "Error: this script need root privilèges"
+    exit 1
+fi
 
 sed -i -r 's/^.*lab//' /etc/hosts
 virsh shutdown nextcloud
