@@ -13,8 +13,8 @@ ssh {{backup_user}}@{{nextcloud_host}} 'sudo -u www-data /usr/bin/php /var/www/h
 ssh {{backup_user}}@{{nextcloud_host}} "mysqldump --single-transaction -u $dbuser -p$dbpassword $dbname > ~/$databasebackup"
 
 # copy datas from the backup server
-rsync -avx {{backup_user}}@{{nextcloud_host}}:/var/www/html/nextcloud/ /data/backup/filesystem/$filesystembackup/
-rsync -avx {{backup_user}}@{{nextcloud_host}}:/home/{{backup_user}}/$databasebackup /data/backup/database/$databasebackup
+rsync -avx {{backup_user}}@{{nextcloud_host}}:/var/www/html/nextcloud/ /data/backup/$filesystembackup/
+rsync -avx {{backup_user}}@{{nextcloud_host}}:/home/{{backup_user}}/$databasebackup /data/backup/$databasebackup
 
 # put nextcloud back to normal mode
 ssh {{backup_user}}@{{nextcloud_host}} php occ maintenance:mode --off
