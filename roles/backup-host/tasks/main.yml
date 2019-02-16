@@ -14,13 +14,25 @@
 
 - name: add ssh keys
   copy:
-    src: "{{ item }}"
-    dest: "/home/{{ backup_user }}/.ssh/{{ item }}"
+    src: "{{ item.src }}"
+    dest: "/home/{{ backup_user }}/.ssh/{{ item.src }}"
     owner: "{{ backup_user }}"
     group: "{{ backup_user }}"
+    mode: "{{ item.mode }}"
   loop:
-    - id_rsa
-    - id_rsa.pub
+    - { src: 'id_rsa', mode: '600' }
+    - { src: 'id_rsa.pub', mode: '644' }
+
+- name: ssh keys are generated for nextcloud hosts
+  command: "ssh-keyscan -t rsa {{ nextcloud_host }}"
+  register: ssh_host_key
+
+- name: backup host know nextcloud host
+  become_user: "{{ backup_user }}"
+  known_hosts:
+    path: "/home/{{ backup_user }}/.ssh/known_hosts"
+    name: "{{ nextcloud_host }}"
+    key: "{{ ssh_host_key.stdout }}"
 
 - name: backup script is present
   template:
@@ -28,4 +40,4 @@
     dest: "/home/{{ backup_user }}/"
     owner: "{{ backup_user }}"
     group: "{{ backup_user }}"
-    mode: 0100
+    mode: 0500
