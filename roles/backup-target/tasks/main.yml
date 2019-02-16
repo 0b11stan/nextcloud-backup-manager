@@ -1,12 +1,19 @@
 - name: user nextsavior is present
   user:
-    name: '{{ backup_user }}'
+    name: "{{ backup_user }}"
     state: present
-    shell: /usr/sbin/nologin
-    groups: www-data
+    shell: /bin/bash
+
+- name: authorize backup user to set nextcloud's maintenance mode
+  copy:
+    src: "nextsavior.sudo"
+    dest: /etc/sudoers.d/nextsavior
+    owner: root
+    group: root
+    mode: 0440
 
 - name: set authorized key for the backup user from the backup host
   authorized_key:
-    user: '{{ backup_user }}'
+    user: "{{ backup_user }}"
     state: present
-    key: '{{ lookup("file", "roles/backup-host/files/id_rsa.pub") }}'
+    key: "{{ lookup('file', 'roles/backup-host/files/id_rsa.pub') }}"

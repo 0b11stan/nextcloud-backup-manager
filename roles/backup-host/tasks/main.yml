@@ -41,3 +41,14 @@
     owner: "{{ backup_user }}"
     group: "{{ backup_user }}"
     mode: 0500
+
+- name: "backup directory for {{ item }} is present"
+  file:
+    path: "/data/backup/{{ item }}"
+    state: directory
+    mode: 0700
+    owner: "{{ backup_user }}"
+    group: "{{ backup_user }}"
+  loop:
+    - database
+    - filesystem
