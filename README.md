@@ -49,3 +49,4 @@ Plan de bataille :
 - [ ] Ameliorer avec log mariadb (2h)
 - [ ] Finaliser automation (1,5h)
 - [ ] Rédiger doc utilisateur (1h)
+- [ ] Clean recette pour check mode et idimpotence
