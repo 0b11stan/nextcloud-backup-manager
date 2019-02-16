@@ -42,8 +42,8 @@ Plan de bataille :
 - [x] Réaliser Backup recommandé (1,5h)
 - [x] Réaliser script de setup (1h)
 - [x] Réaliser la connexion ssh entre machine (2h)
-- [ ] Ajouter l'hote nextcloud dans les known hosts de l'hote backup
-- [ ] S'assurer de la variabilisation de l'hote (ip) (1h)
+- [x] Ajouter l'hote nextcloud dans les known hosts de l'hote backup
+- [x] S'assurer de la variabilisation de l'hote (ip) (1h)
 - [ ] Faire fonctionner backup en cron (ip) (2h)
 - [ ] Ameliorer avec rétention (2h)
 - [ ] Ameliorer avec log mariadb (2h)
