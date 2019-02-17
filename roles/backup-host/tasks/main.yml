@@ -48,3 +48,12 @@
     state: directory
     mode: 0700
     owner: "{{ backup_user }}"
+
+- name: Add cron for playing the backup script
+  cron:
+    name: "{{ item.name }}"
+    minute: "{{ item.minute }}"
+    hour: "{{ item.hour }}"
+    user: "{{ backup_user }}"
+    job: "/home/{{ backup_user }}/.backup.sh"
+  loop: "{{ backup_occurrence }}"

@@ -54,6 +54,17 @@ backup_user: nextsavior
 # host (you can enter an ip address).
 nextcloud_host: $nextcloud_host
 
+# You can add any occurence you want the server to make a backup
+# A cron job will be created at the defined hour.
+# You MUST give a name to your occurence
+backup_occurrence:
+  - name: first occurence
+    hour: 00
+    minute: 15
+  - name: second occurence
+    hour: 12
+    minute: 30
+
 # This is nextcloud's default credentials for its database, you
 # must change the password accordingly.
 database:
