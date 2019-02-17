@@ -79,16 +79,16 @@ vim group_vars/all.yml
 echo ">> write inventory file..."
 tee inventory.ini >/dev/null << EOF
 [nextcloud-host]
-$nextcloud_host
+$nextcloud_host ansible_sudo_pass=$next_sudo_pass
 [backup-host]
-$backup_host
+$backup_host ansible_sudo_pass=$back_sudo_pass
 EOF
 
 echo ">> generate ssh keys for host and backup connexion ..."
 ssh-keygen -f roles/backup-host/files/id_rsa -N '' >/dev/null
 
 echo ">> thank you, installation process will continue with ansible ..."
-echo && ansible-playbook -Kb -i inventory.ini site.yml
+ansible-playbook -b -i inventory.ini site.yml
 
 rm roles/backup-host/files/id_rsa*
 rm group_vars/all.yml
