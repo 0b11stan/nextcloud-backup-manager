@@ -55,5 +55,5 @@
     minute: "{{ item.minute }}"
     hour: "{{ item.hour }}"
     user: "{{ backup_user }}"
-    job: "/home/{{ backup_user }}/.backup.sh"
+    job: "/home/{{ backup_user }}/backup.sh"
   loop: "{{ backup_occurrence }}"
