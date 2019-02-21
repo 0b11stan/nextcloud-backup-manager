@@ -17,4 +17,4 @@ rsync -avx {{backup_user}}@{{nextcloud_host}}:/var/www/html/nextcloud/ /data/bac
 rsync -avx {{backup_user}}@{{nextcloud_host}}:/home/{{backup_user}}/$databasebackup /data/backup/$databasebackup
 
 # put nextcloud back to normal mode
-ssh {{backup_user}}@{{nextcloud_host}} php occ maintenance:mode --off
+ssh {{backup_user}}@{{nextcloud_host}} 'sudo -u www-data /usr/bin/php /var/www/html/nextcloud/occ maintenance:mode --off'
