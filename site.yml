@@ -3,7 +3,14 @@
 - hosts: nextcloud-host
   roles:
     - backup-target
+  tags: install
 
 - hosts: backup-host
   roles:
     - backup-host
+  tags: install
+
+- hosts: nextcloud-host
+  roles:
+    - restore
+  tags: restore

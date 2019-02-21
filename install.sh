@@ -76,7 +76,7 @@ EOF
 read -sp ">> press enter to access the config file :" && echo
 vim group_vars/all.yml
 
-echo ">> write inventory file..."
+echo ">> write inventory file ..."
 tee inventory.ini >/dev/null << EOF
 [nextcloud-host]
 $nextcloud_host ansible_sudo_pass=$next_sudo_pass
@@ -88,7 +88,7 @@ echo ">> generate ssh keys for host and backup connexion ..."
 ssh-keygen -f roles/backup-host/files/id_rsa -N '' >/dev/null
 
 echo ">> thank you, installation process will continue with ansible ..."
-ansible-playbook -b -i inventory.ini site.yml
+ansible-playbook -b -t install -i inventory.ini site.yml
 
 rm roles/backup-host/files/id_rsa*
 rm group_vars/all.yml
