@@ -1,7 +1,0 @@
-- name: maintenance mode is on
-
-- name: restore filesystem
-
-- name: restore database
-
-- name: maintenance mode is off
