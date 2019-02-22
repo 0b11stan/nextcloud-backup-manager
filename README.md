@@ -1,4 +1,46 @@
-GIT : git@github.com:TristanPinaudeau/nextcloud-backup-manager.git
+# Nextcloud Backup Manager
+
+## User Documentation
+
+Installing *nextcloud backup manager* is crazy simple.
+Simply use the nbm script in this repository.
+
+**Short install example :**
+```
+./nbm.sh --install -u tristan -n nextcloud.lab -b backup.lab
+```
+
+**Short restore example :**
+```
+./nbm.sh --restore -u tristan -b backup.lab
+```
+
+**For the long version :**
+
+The first argument of the nbm script specify the main action you want to performe.
+For installing and seting up a new backup server for nextcloud, specify the `--install` argument.
+For restoring a version, specify the `--restore` argument.
+
+All allowed arguments :
+* `-u` : a user account with sudoers rights present on both servers
+* `-n` : a hostname or ip address of the nextcloud server
+* `-b` : a hostname or ip address of the backup server
+
+During an installation, the `-n`, `-u` and `-b` arguments are required.
+A configuration file will be opened during the process with default variables.
+You can configure thoses variables to your needs.
+**! Beware ! the nextcloud's hostname (or ip address) in the config file is needed to join the nextcloud host from the backup host it may not be the same as the one in your command line.**
+
+During a restoration you should not specify the `-n` arguments.
+
+## Description
+
+Tech stack :
+- rsync
+- zfs
+- crontab
+- ansible
+- bash
 
 Situation Initiale :
 - Un serveur sur lequel tourne un nextcloud
