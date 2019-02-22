@@ -33,10 +33,10 @@ Lab :
 
 Doc :
 - nextcloud : https://docs.nextcloud.com/servers/stable/admin_manual/contents.html
-- backup : https://docs.nextcloud.com/server/stable/admin_manual/maintenance/backup.html
-- restore : https://docs.nextcloud.com/server/stable/admin_manual/maintenance/restore.html
+- backup    : https://docs.nextcloud.com/server/stable/admin_manual/maintenance/backup.html
+- restore   : https://docs.nextcloud.com/server/stable/admin_manual/maintenance/restore.html
 
-Plan de bataille :
+Roadmap :
 - [x] Monter Réseau (0,5h) => il faut réaliser un dhclient pour avoir une ip
 - [x] Faire snap des machines (15m)
 - [x] Réaliser Backup recommandé (1,5h)
@@ -47,8 +47,8 @@ Plan de bataille :
 - [x] Faire fonctionner backup en cron (ip) (2h)
 - [x] Tester cron
 - [x] Ajout réstoration
-- [ ] Ameliorer avec snap (2h)
+- [x] Ameliorer avec snap (2h)
 - [ ] Ameliorer avec log mariadb (2h)
-- [ ] Finaliser automation (1,5h)
+- [x] Finaliser automation (1,5h)
 - [ ] Rédiger doc utilisateur (1h)
 - [ ] Clean recette pour check mode et idimpotence

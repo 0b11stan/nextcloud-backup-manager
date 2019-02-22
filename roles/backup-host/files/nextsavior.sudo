@@ -1,2 +1,4 @@
 Cmnd_Alias NEXTCLOUD_RSYNC = /usr/bin/rsync
+Cmnd_Alias NEXTCLOUD_ZFS = /sbin/zfs
 nextsavior ALL = NOPASSWD: NEXTCLOUD_RSYNC
+nextsavior ALL = NOPASSWD: NEXTCLOUD_ZFS
