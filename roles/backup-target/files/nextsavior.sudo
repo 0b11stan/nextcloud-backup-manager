@@ -1,2 +1,4 @@
-Cmnd_Alias NEXTCLOUD_CMD = /usr/bin/php /var/www/html/nextcloud/occ maintenance\:mode *
-nextsavior ALL = (www-data) NOPASSWD: NEXTCLOUD_CMD
+Cmnd_Alias NEXTCLOUD_MAINTENANCE = /usr/bin/php /var/www/html/nextcloud/occ maintenance\:mode *
+Cmnd_Alias NEXTCLOUD_RSYNC = /usr/bin/rsync
+nextsavior ALL = (www-data) NOPASSWD: NEXTCLOUD_MAINTENANCE
+nextsavior ALL = NOPASSWD: NEXTCLOUD_RSYNC

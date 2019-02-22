@@ -34,19 +34,36 @@
     name: "{{ nextcloud_host }}"
     key: "{{ ssh_host_key.stdout }}"
 
-- name: backup script is present
+- name: backup host know nextcloud host
+  known_hosts:
+    path: "/root/.ssh/known_hosts"
+    name: "{{ nextcloud_host }}"
+    key: "{{ ssh_host_key.stdout }}"
+
+- name: backup and restore scripts are present
   template:
-    src: backup.sh
+    src: "{{ item }}"
     dest: "/home/{{ backup_user }}/"
     owner: "{{ backup_user }}"
     group: "{{ backup_user }}"
     mode: 0500
+  loop:
+    - backup.sh
+    - restore.sh
+
+- name: authorize backup user to set nextcloud's maintenance mode
+  copy:
+    src: "nextsavior.sudo"
+    dest: /etc/sudoers.d/nextsavior
+    owner: root
+    group: root
+    mode: 0440
 
 - name: "{{ backup_user }} has rights on /data/backup"
   file:
     path: "/data/backup/"
     state: directory
-    mode: 0700
+    mode: 0744
     owner: "{{ backup_user }}"
 
 - name: Add cron for playing the backup script

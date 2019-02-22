@@ -1,0 +1,2 @@
+Cmnd_Alias NEXTCLOUD_RSYNC = /usr/bin/rsync
+nextsavior ALL = NOPASSWD: NEXTCLOUD_RSYNC
