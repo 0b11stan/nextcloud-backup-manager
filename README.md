@@ -46,7 +46,7 @@ Plan de bataille :
 - [x] S'assurer de la variabilisation de l'hote (ip) (1h)
 - [x] Faire fonctionner backup en cron (ip) (2h)
 - [x] Tester cron
-- [ ] Ajout réstoration
+- [x] Ajout réstoration
 - [ ] Ameliorer avec snap (2h)
 - [ ] Ameliorer avec log mariadb (2h)
 - [ ] Finaliser automation (1,5h)
