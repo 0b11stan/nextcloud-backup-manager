@@ -38,7 +38,7 @@ for version in $versions; do
     ((count++))
 done
 
-read -p '>> please choose the backup version you want to restore : ' -s chosen_version_number && echo
+read -p '>> please choose the backup version you want to restore : ' chosen_version_number && echo
 
 count=0
 for version in $versions; do
